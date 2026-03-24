@@ -1,0 +1,145 @@
+1) Clase Casilla
+Representa una posición del tablero.
+
+Atributos:
+
+boolean tieneBarco
+
+boolean disparado
+
+Métodos:
+
+public boolean tieneBarco()
+
+public void colocarBarco()
+
+public void disparar()
+
+public boolean estaDisparada()
+
+2) Clase Barco
+Representa un barco (puede ser de 1 casilla para simplificar).
+
+Atributos:
+
+int fila
+
+int columna
+
+boolean hundido
+
+Métodos:
+
+public Barco(int fila, int columna)
+
+public boolean estaHundido(Casilla[][] tablero)
+
+3) Clase Tablero
+Es la matriz donde se juega.
+
+Atributos:
+
+Casilla[][] casillas
+
+Barco[] barcos
+
+Métodos:
+public Tablero(int tamaño)
+public void colocarBarcosAleatorios(int cantidad)
+public boolean disparar(int fila, int columna)
+public boolean quedanBarcos()
+public void mostrarTableroOculto() (lo que ve el rival)
+public void mostrarTableroCompleto() (para depurar)
+
+4) Clase Jugador
+Atributos:
+
+String nombre
+
+Tablero tableroPropio
+
+Tablero tableroRival (solo para mostrar disparos)
+
+Métodos:
+
+public Jugador(String nombre, int tamañoTablero)
+
+public boolean dispararA(Jugador rival, int fila, int columna)
+
+5) Clase Partida
+Controla el flujo del juego.
+
+Atributos:
+
+Jugador jugador1
+
+Jugador jugador2
+
+Jugador turnoActual
+
+Métodos:
+
+public Partida(String nombre1, String nombre2, int tamaño)
+
+public void iniciar()
+
+private void cambiarTurno()
+
+private boolean partidaTerminada()
+
+6) Clase Main
+Punto de entrada.
+
+Métodos:
+
+public static void main(String[] args)
+
+Crear partida
+
+Llamar a iniciar()
+
+
+
+public class Casilla {
+    private boolean tieneBarco;
+    private boolean disparado;
+
+    public Casilla() {
+        this.tieneBarco = false;
+        this.disparado = false;
+    }
+
+    public boolean tieneBarco() {
+        return tieneBarco;
+    }
+
+    public void colocarBarco() {
+        this.tieneBarco = true;
+    }
+
+    public void disparar() {
+        this.disparado = true;
+    }
+
+    public boolean estaDisparada() {
+        return disparado;
+    }
+}
+
+public class Barco {
+    private int fila;
+    private int columna;
+
+    public Barco(int fila, int columna) {
+        this.fila = fila;
+        this.columna = columna;
+    }
+
+    public int getFila() {
+        return fila;
+    }
+
+    public int getColumna() {
+        return columna;
+    }
+}
