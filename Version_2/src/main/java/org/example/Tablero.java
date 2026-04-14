@@ -30,6 +30,15 @@ public class Tablero {
         Casilla casilla = casillas[c.getFila()][c.getColumna()];
         casilla.marcarDisparo();
 
+        if (casilla.tieneBarco()) {
+            Barco b = casilla.getBarco();
+            b.registrarImpacto(c);
+            System.out.println("Impacto en " + b.getNombre());
+            return true;
+        }
+
+        System.out.println("Agua.");
+        return false;
     }
 
     public boolean todasHundidas() {
