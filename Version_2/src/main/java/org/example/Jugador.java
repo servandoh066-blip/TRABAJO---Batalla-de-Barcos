@@ -13,7 +13,8 @@ public class Jugador {
         this.tablero = new Tablero();
     }
 
-    public Tablero getTablero() {
+    public Tablero getTablero()
+    {
         return tablero;
     }
 
@@ -32,27 +33,7 @@ public class Jugador {
         for (int i = 0; i < tamanos.length; i++) {
             boolean colocado = false;
 
-            while (!colocado) {
-                System.out.println("Coloca el " + nombres[i] + " (tamaño " + tamanos[i] + ")");
 
-                System.out.print("Fila inicial: ");
-                int fila = sc.nextInt();
-
-                System.out.print("Columna inicial: ");
-                int col = sc.nextInt();
-
-                System.out.print("Horizontal (true/false): ");
-                boolean horizontal = sc.nextBoolean();
-
-                Barco b = new Barco(nombres[i], tamanos[i]);
-
-                if (tablero.posicionValida(b, new Coordenada(fila, col), horizontal)) {
-                    tablero.colocarBarco(b, new Coordenada(fila, col), horizontal);
-                    colocado = true;
-                } else {
-                    System.out.println("Posición no válida, intenta de nuevo.");
-                }
-            }
         }
     }
 }
