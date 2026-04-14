@@ -23,7 +23,17 @@ public class Tablero {
         int fila = inicio.getFila();
         int col = inicio.getColumna();
 
+        for (int i = 0; i < barco.getTamano(); i++) {
+            if (horizontal) {
+                casillas[fila][col + i].setBarco(barco);
+                barco.addPosicion(new Coordenada(fila, col + i));
+            } else {
+                casillas[fila + i][col].setBarco(barco);
+                barco.addPosicion(new Coordenada(fila + i, col));
+            }
+        }
 
+        barcos.add(barco);
     }
 
     public boolean recibirDisparo(Coordenada c) {
@@ -52,6 +62,18 @@ public class Tablero {
         int fila = inicio.getFila();
         int col = inicio.getColumna();
 
+        if (horizontal) {
+            if (col + barco.getTamano() > 10) return false;
+            for (int i = 0; i < barco.getTamano(); i++) {
+                if (casillas[fila][col + i].tieneBarco()) return false;
+            }
+        } else {
+            if (fila + barco.getTamano() > 10) return false;
+            for (int i = 0; i < barco.getTamano(); i++) {
+                if (casillas[fila + i][col].tieneBarco()) return false;
+            }
+        }
 
+        return true;
     }
 }
