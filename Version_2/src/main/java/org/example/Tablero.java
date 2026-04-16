@@ -43,11 +43,11 @@ public class Tablero {
         if (casilla.tieneBarco()) {
             Barco b = casilla.getBarco();
             b.registrarImpacto(c);
-            System.out.println("Impacto en " + b.getNombre());
+            System.out.println("¡BOOOM! Impacto en " + b.getNombre());
             return true;
         }
 
-        System.out.println("Agua.");
+        System.out.println("Vaya, fue todo agua.");
         return false;
     }
 

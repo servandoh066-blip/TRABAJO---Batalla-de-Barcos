@@ -26,22 +26,22 @@ public class Jugador {
         Scanner sc = new Scanner(System.in);
 
         int[] tamanos = {5, 4, 3, 3, 2};
-        String[] nombres = {"Portaaviones", "Acorazado", "Submarino", "Destructor", "Fragata"};
+        String[] nombres = {"Portaaviones", "Caza", "Submarino", "Destructor", "Fragata"};
 
         System.out.println("Colocando barcos para " + nombre);
 
         for (int i = 0; i < tamanos.length; i++) {
             boolean colocado = false;
             while (!colocado) {
-                System.out.println("Coloca el " + nombres[i] + " (tamaño " + tamanos[i] + ")");
+                System.out.println("Coloca el " + nombres[i] + " (tamaaño " + tamanos[i] + ")");
 
                 System.out.print("Fila inicial: ");
                 int fila = sc.nextInt();
 
-                System.out.print("Columna inicial: ");
+                System.out.print("Columnna inicial: ");
                 int col = sc.nextInt();
 
-                System.out.print("Horizontal (true/false): ");
+                System.out.print("En horizontal? (true/false): ");
                 boolean horizontal = sc.nextBoolean();
 
                 Barco b = new Barco(nombres[i], tamanos[i]);
