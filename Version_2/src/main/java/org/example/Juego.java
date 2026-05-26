@@ -29,7 +29,7 @@ public class Juego {
             System.out.print("Fila del disparo: ");
             int fila = sc.nextInt();
 
-            System.out.print("Columna del disparo: ");
+            System.out.print("Col del disparo: ");
             int col = sc.nextInt();
 
             enemigo.getTablero().recibirDisparo(new Coordenada(fila, col));
