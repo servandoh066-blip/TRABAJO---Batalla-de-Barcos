@@ -23,5 +23,7 @@ public class Coordenada {
         if (!(o instanceof Coordenada)) return false;
         Coordenada c = (Coordenada) o;
         return fila == c.fila && columna == c.columna;
+
+
     }
 }
