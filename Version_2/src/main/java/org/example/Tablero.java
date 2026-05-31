@@ -36,23 +36,25 @@ public class Tablero {
         barcos.add(barco);
     }
 
-    public boolean recibirDisparo(Coordenada c) throws CoordenadaInvalidaExcepcion {
-        if (c.getFila() < 0 || c.getFila() >= 10 || c.getColumna() < 0 || c.getColumna() >= 10) {
-            throw new CoordenadaInvalidaExcepcion("Coordenada fuera del tablero 0 a 9");
-        }
 
-        Casilla casilla = casillas[c.getFila()][c.getColumna()];
-        casilla.marcarDisparo();
+    public boolean recibirDisparo(Coordenada coord) {
+        int fila = coord.getFila();
+        int columna = coord.getColumna();
 
+        Casilla casilla = casillas[fila][columna];
+
+        // Si la casilla tiene un barco...
         if (casilla.tieneBarco()) {
-            Barco b = casilla.getBarco();
-            b.registrarImpacto(c);
-            System.out.println("¡BOOOM! Impacto en " + b.getNombre());
+            casilla.setDisparada(true);
+            System.out.println("Tocado");
             return true;
         }
-
-        System.out.println("Vaya, fue todo agua.");
-        return false;
+        // Si la casilla está vacía (Agua)...
+        else {
+            casilla.setDisparada(true);
+            System.out.println("Agua");
+            return false;
+        }
     }
 
     public boolean todasHundidas() {
@@ -81,12 +83,8 @@ public class Tablero {
 
         return true;
     }
-    public boolean tieneBarcoEnCoordenada(int fila, int columna) {
-        if (fila >= 0 && fila < 10 && columna >= 0 && columna < 10) {
-            return casillas[fila][columna].tieneBarco();
-        }
-        return false;
+    public Casilla getCasilla(int fila, int columna) {
+        return casillas[fila][columna];
     }
-
 
 }

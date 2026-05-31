@@ -1,43 +1,27 @@
 package org.example;
 
 public class Casilla {
-
-    private TipoCasilla estado;
+    private boolean disparada;
     private Barco barco;
-
     public Casilla() {
-        this.estado = TipoCasilla.AGUA;
+        this.disparada = false;
         this.barco = null;
     }
-    public void setBarco(Barco b) {
-        this.barco = b;
-        this.estado=TipoCasilla.BARCO;
-    }
-
     public boolean tieneBarco() {
-        return barco != null;
-    }
-
-    public void marcarDisparo() {
-        if(tieneBarco()){
-        estado=TipoCasilla.TOCADO;
-        }
-        else {
-            estado=TipoCasilla.AGUA_DISPARADA;
-        }
+        return this.barco != null;
     }
 
     public boolean estaDisparada() {
-        return estado == TipoCasilla.TOCADO || estado == TipoCasilla.AGUA_DISPARADA;
+        return this.disparada;
+    }
+    public void setDisparada(boolean disparada) {
+        this.disparada = disparada;
     }
 
     public Barco getBarco() {
-        return barco;
+        return this.barco;
     }
-
-    public TipoCasilla getEstado() {
-        return estado;
+    public void setBarco(Barco barco) {
+        this.barco = barco;
     }
 }
-
-

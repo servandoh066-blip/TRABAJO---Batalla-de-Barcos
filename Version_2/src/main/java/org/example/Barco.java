@@ -5,13 +5,13 @@ import java.util.ArrayList;
 public class Barco {
 
     private String nombre;
-    private int tamano;
+    private int tamaño;
     private ArrayList<Coordenada> posiciones;
     private ArrayList<Coordenada> impactos;
 
     public Barco(String nombre, int tamano) {
         this.nombre = nombre;
-        this.tamano = tamano;
+        this.tamaño = tamano;
         posiciones = new ArrayList<>();
         impactos = new ArrayList<>();
     }
@@ -21,7 +21,7 @@ public class Barco {
     }
 
     public boolean estaHundido() {
-        return impactos.size() == tamano;
+        return impactos.size() == tamaño;
     }
 
     public void registrarImpacto(Coordenada c) {
@@ -31,7 +31,7 @@ public class Barco {
     }
 
     public int getTamano() {
-        return tamano;
+        return tamaño;
     }
 
     public String getNombre() {
