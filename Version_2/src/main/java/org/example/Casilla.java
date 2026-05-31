@@ -2,12 +2,12 @@ package org.example;
 
 public class Casilla {
 
-    private boolean disparada;
+    private TipoCasilla estado;
     private Barco barco;
 
     public Casilla() {
-        disparada = false;
-        barco = null;
+        this.estado = TipoCasilla.AGUA;
+        this.barco = null;
     }
     public void setBarco(Barco b) {
         barco = b;
