@@ -1,10 +1,16 @@
 package org.example;
-
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import javax.swing.SwingUtilities;
 public class Main {
     static void main(String[] args) {
         Juego juego = new Juego();
         juego.iniciar();
-    }
-}
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                        VentanaJuego ventana = new VentanaJuego();
+                        ventana.setVisible(true);
+                    }
+                });
+            }
+        }
+

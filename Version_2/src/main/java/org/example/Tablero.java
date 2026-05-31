@@ -81,4 +81,12 @@ public class Tablero {
 
         return true;
     }
+    public boolean tieneBarcoEnCoordenada(int fila, int columna) {
+        if (fila >= 0 && fila < 10 && columna >= 0 && columna < 10) {
+            return casillas[fila][columna].tieneBarco();
+        }
+        return false;
+    }
+
+
 }
