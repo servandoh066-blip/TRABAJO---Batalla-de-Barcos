@@ -59,13 +59,16 @@ public class Jugador {
         String[] nombres = {"Portaaviones", "Caza", "Submarino", "Destructor", "Fragata"};
         System.out.println("Colocando barcos para " + nombre);
 
+        // 🌟 1. MOSTRAMOS EL TABLERO COMPLETAMENTE VACÍO NADA MÁS EMPEZAR
+        mostrarTableroColocacion();
+
         for (int i = 0; i < tamaños.length; i++) {
             boolean colocado = false;
             while (!colocado) {
-                System.out.println("Coloca el " + nombres[i] + " (tamaaño " + tamaños[i] + ")");
+                System.out.println("Coloca el " + nombres[i] + " (tamaño " + tamaños[i] + ")");
                 System.out.print("Fila inicial: ");
                 int fila = sc.nextInt();
-                System.out.print("Columnna inicial: ");
+                System.out.print("Columna inicial: ");
                 int col = sc.nextInt();
                 System.out.print("En horizontal? (true/false): ");
                 boolean horizontal = sc.nextBoolean();
@@ -92,8 +95,11 @@ public class Jugador {
                 if (tablero.posicionValida(b, new Coordenada(fila, col), horizontal)) {
                     tablero.colocarBarco(b, new Coordenada(fila, col), horizontal);
                     colocado = true;
+
+                    // 🌟 2. EL BARCO SE HA COLOCADO CON ÉXITO: ACTUALIZAMOS EL TABLERO VISUAL
+                    mostrarTableroColocacion();
                 } else {
-                    System.out.println("Posición inválida, intentalo de nuevo.");
+                    System.out.println("Posición inválida, inténtalo de nuevo.");
                 }
             }
         }
