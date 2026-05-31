@@ -25,9 +25,9 @@ public class Coordenada {
         return fila == c.fila && columna == c.columna;
     }
     @Override
-    public boolean recibirDisparo(Coordenada c) throws CoordenadaInvalidaException {
+    public boolean recibirDisparo(Coordenada c) throws CoordenadaInvalidaExcepcion {
         if (c.getFila() < 0 || c.getFila() >= 10 || c.getColumna() < 0 || c.getColumna() >= 10) {
-            throw new CoordenadaInvalidaException("La coordenada tiene que estar entre 0-9");
+            throw new CoordenadaInvalidaExcepcion("La coordenada tiene que estar entre 0-9");
         }
         return this.equals(c);
     }

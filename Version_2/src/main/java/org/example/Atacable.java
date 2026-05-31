@@ -1,5 +1,5 @@
 package org.example;
 
 public interface Atacable {
-    boolean recibirDisparo(Coordenada c) throws crearExcepcion;
+    boolean recibirDisparo(Coordenada c) throws CoordenadaInvalidaExcepcion;
 }
