@@ -29,19 +29,22 @@ public class Juego {
             System.out.print("Fila del disparo: ");
             int fila = sc.nextInt();
 
-            System.out.print("Col del disparo: ");
+            System.out.print("Columna del disparo: ");
             int col = sc.nextInt();
+            try {
+                enemigo.getTablero().recibirDisparo(new Coordenada(fila, col));
+                if (enemigo.getTablero().todasHundidas()) {
+                    System.out.println(actual.getNombre() + " ha ganado la partida");
+                    terminado = true;
+                }
 
-            enemigo.getTablero().recibirDisparo(new Coordenada(fila, col));
-
-            if (enemigo.getTablero().todasHundidas()) {
-                System.out.println(actual.getNombre() + " ha ganado la partida");
-                terminado = true;
+                Jugador temp = actual;
+                actual = enemigo;
+                enemigo = temp;
+            } catch (CoordenadaInvalidaExcepcion e) {
+                System.out.println(e.getMessage() + " Inténtalo de nuevo.");
             }
-
-            Jugador temp = actual;
-            actual = enemigo;
-            enemigo = temp;
+            sc.close();
         }
     }
 }
