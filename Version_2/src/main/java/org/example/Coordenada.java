@@ -20,15 +20,14 @@ public class Coordenada {
 
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof Coordenada)) return false;
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         Coordenada c = (Coordenada) o;
         return fila == c.fila && columna == c.columna;
     }
+//recurrimos a la ia para solucionar el problema
     @Override
-    public boolean recibirDisparo(Coordenada c) throws CoordenadaInvalidaExcepcion {
-        if (c.getFila() < 0 || c.getFila() >= 10 || c.getColumna() < 0 || c.getColumna() >= 10) {
-            throw new CoordenadaInvalidaExcepcion("La coordenada tiene que estar entre 0-9");
-        }
-        return this.equals(c);
+    public int hashCode() {
+        return 31 * fila + columna;
     }
 }

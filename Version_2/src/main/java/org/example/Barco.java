@@ -2,18 +2,18 @@ package org.example;
 
 import java.util.ArrayList;
 
-public abstract class Barco {
+public class Barco {
 
     private String nombre;
-    private int tamaño;
+    private int tamano;
     private ArrayList<Coordenada> posiciones;
     private ArrayList<Coordenada> impactos;
 
     public Barco(String nombre, int tamano) {
         this.nombre = nombre;
-        this.tamaño = tamaño;
-        this.posiciones = new ArrayList<>();
-        this.impactos = new ArrayList<>();
+        this.tamano = tamano;
+        posiciones = new ArrayList<>();
+        impactos = new ArrayList<>();
     }
 
     public void addPosicion(Coordenada c) {
@@ -21,17 +21,17 @@ public abstract class Barco {
     }
 
     public boolean estaHundido() {
-        return impactos.size() == tamaño;
+        return impactos.size() == tamano;
     }
 
     public void registrarImpacto(Coordenada c) {
-        if(!impactos.contains(c)){
+        if (!impactos.contains(c)) {
             impactos.add(c);
         }
     }
 
     public int getTamano() {
-        return tamaño;
+        return tamano;
     }
 
     public String getNombre() {
@@ -41,5 +41,4 @@ public abstract class Barco {
     public ArrayList<Coordenada> getPosiciones() {
         return posiciones;
     }
-
 }
