@@ -10,7 +10,8 @@ public class Casilla {
         this.barco = null;
     }
     public void setBarco(Barco b) {
-        barco = b;
+        this.barco = b;
+        this.estado=TipoCasilla.BARCO;
     }
 
     public boolean tieneBarco() {
@@ -18,11 +19,16 @@ public class Casilla {
     }
 
     public void marcarDisparo() {
-        disparada = true;
+        if(tieneBarco()){
+        estado=TipoCasilla.TOCADO;
+        }
+        else {
+            estado=TipoCasilla.AGUA_DISPARADA;
+        }
     }
 
     public boolean estaDisparada() {
-        return disparada;
+        return estado == TipoCasilla.TOCADO || estado == TipoCasilla.AGUA_DISPARADA;
     }
 
     public Barco getBarco() {
