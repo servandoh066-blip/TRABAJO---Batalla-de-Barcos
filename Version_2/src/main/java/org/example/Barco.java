@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.ArrayList;
 
-public class Barco {
+public abstract class Barco {
 
     private String nombre;
     private int tamano;
