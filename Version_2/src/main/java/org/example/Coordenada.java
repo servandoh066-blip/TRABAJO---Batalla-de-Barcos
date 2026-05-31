@@ -23,7 +23,12 @@ public class Coordenada {
         if (!(o instanceof Coordenada)) return false;
         Coordenada c = (Coordenada) o;
         return fila == c.fila && columna == c.columna;
-
-
+    }
+    @Override
+    public boolean recibirDisparo(Coordenada c) throws CoordenadaInvalidaException {
+        if (c.getFila() < 0 || c.getFila() >= 10 || c.getColumna() < 0 || c.getColumna() >= 10) {
+            throw new CoordenadaInvalidaException("La coordenada tiene que estar entre 0-9");
+        }
+        return this.equals(c);
     }
 }
