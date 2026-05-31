@@ -75,8 +75,6 @@ public class Jugador {
                     System.out.println("Posición inválida, intentalo de nuevo.");
                 }
             }
-
-
         }
     }
 }

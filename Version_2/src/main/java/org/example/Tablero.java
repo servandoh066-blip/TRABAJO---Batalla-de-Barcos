@@ -36,7 +36,11 @@ public class Tablero {
         barcos.add(barco);
     }
 
-    public boolean recibirDisparo(Coordenada c) {
+    public boolean recibirDisparo(Coordenada c) throws CoordenadaInvalidaExcepcion {
+        if (c.getFila() < 0 || c.getFila() >= 10 || c.getColumna() < 0 || c.getColumna() >= 10) {
+            throw new CoordenadaInvalidaExcepcion("Coordenada fuera del tablero 0 a 9");
+        }
+
         Casilla casilla = casillas[c.getFila()][c.getColumna()];
         casilla.marcarDisparo();
 
@@ -61,6 +65,7 @@ public class Tablero {
     public boolean posicionValida(Barco barco, Coordenada inicio, boolean horizontal) {
         int fila = inicio.getFila();
         int col = inicio.getColumna();
+        int tam = barco.getTamano();
 
         if (horizontal) {
             if (col + barco.getTamano() > 10) return false;
