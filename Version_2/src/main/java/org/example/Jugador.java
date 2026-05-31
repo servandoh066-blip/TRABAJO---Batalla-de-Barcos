@@ -12,7 +12,14 @@ public class Jugador {
         this.nombre = nombre;
         this.tablero = new Tablero();
         this.barcosRestantes = new HashMap<>();
-
+        this.barcosRestantes.put("Portaaviones", 1);
+        this.barcosRestantes.put("Caza", 1);
+        this.barcosRestantes.put("Submarino", 1);
+        this.barcosRestantes.put("Destructor", 1);
+        this.barcosRestantes.put("Fragata", 1);
+    }
+    public HashMap<String, Integer> getBarcosRestantes(){
+        return barcosRestantes;
     }
 
     public Tablero getTablero()
@@ -27,12 +34,11 @@ public class Jugador {
     public void colocarBarcos() {
         Scanner sc = new Scanner(System.in);
 
-        int[] tamanos = {5, 4, 3, 3, 2};
+        int[] tamaños = {5, 4, 3, 3, 2};
         String[] nombres = {"Portaaviones", "Caza", "Submarino", "Destructor", "Fragata"};
-
         System.out.println("Colocando barcos para " + nombre);
 
-        for (int i = 0; i < tamanos.length; i++) {
+        for (int i = 0; i < tamaños.length; i++) {
             boolean colocado = false;
             while (!colocado) {
                 System.out.println("Coloca el " + nombres[i] + " (tamaaño " + tamaños[i] + ")");
@@ -43,7 +49,11 @@ public class Jugador {
                 System.out.print("En horizontal? (true/false): ");
                 boolean horizontal = sc.nextBoolean();
 
-                Barco b = new Barco(nombres[i], tamaños[i]);
+                Barco b = null;
+                switch (nombres[i]) {
+                    case "Portaaviones": b = new Portaaviones(); break;
+
+
 
                 if (tablero.posicionValida(b, new Coordenada(fila, col), horizontal)) {
                     tablero.colocarBarco(b, new Coordenada(fila, col), horizontal);
