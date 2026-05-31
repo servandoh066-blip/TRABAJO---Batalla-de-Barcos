@@ -51,9 +51,22 @@ public class Jugador {
 
                 Barco b = null;
                 switch (nombres[i]) {
-                    case "Portaaviones": b = new Portaaviones(); break;
-
-
+                    case "Portaaviones":
+                        b = new Portaaviones();
+                        break;
+                    case "Caza":
+                        b = new Caza();
+                        break;
+                    case "Submarino":
+                        b = new Submarino();
+                        break;
+                    case "Destructor":
+                        b = new Destructor();
+                        break;
+                    case "Fragata":
+                        b = new Fragata();
+                        break;
+                }
 
                 if (tablero.posicionValida(b, new Coordenada(fila, col), horizontal)) {
                     tablero.colocarBarco(b, new Coordenada(fila, col), horizontal);
