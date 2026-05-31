@@ -69,12 +69,12 @@ public class Tablero {
 
         if (horizontal) {
             if (col + barco.getTamano() > 10) return false;
-            for (int i = 0; i < barco.getTamano(); i++) {
+            for (int i = 0; i < tam; i++) {
                 if (casillas[fila][col + i].tieneBarco()) return false;
             }
         } else {
-            if (fila + barco.getTamano() > 10) return false;
-            for (int i = 0; i < barco.getTamano(); i++) {
+            if (fila + tam > 10 || col < 0 || col >= 10 || fila < 0) return false;
+            for (int i = 0; i <tam; i++) {
                 if (casillas[fila + i][col].tieneBarco()) return false;
             }
         }
