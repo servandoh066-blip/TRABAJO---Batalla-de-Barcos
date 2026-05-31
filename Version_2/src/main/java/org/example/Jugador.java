@@ -32,24 +32,24 @@ public class Jugador {
     }
     //creado con la ia
     public void mostrarTableroColocacion() {
-        System.out.println("\n=== TU MAPA DE COLOCACIÓN (" + this.nombre + ") ===");
-        System.out.println("   0  1  2  3  4  5  6  7  8  9");
-        System.out.println("  +-----------------------------+");
+        System.out.println("\n=== MAPA ACTUAL DE " + this.nombre.toUpperCase() + " ===");
+        System.out.println("     0  1  2  3  4  5  6  7  8  9");
+        System.out.println("   +-----------------------------+");
 
         for (int i = 0; i < 10; i++) {
-            System.out.print(i + " |");
+            System.out.print(" " + i + " |");
             for (int j = 0; j < 10; j++) {
-                // Usamos el método getCasilla que añadimos en tu Tablero
+                // Accedemos a la casilla usando el getter de tu Tablero
                 Casilla c = this.tablero.getCasilla(i, j);
                 if (c.tieneBarco()) {
-                    System.out.print(" B "); // Muestra dónde vas poniendo tus barcos
+                    System.out.print(" B "); // Pinta el barco detectado
                 } else {
                     System.out.print(" ~ "); // Agua vacía
                 }
             }
             System.out.println("|");
         }
-        System.out.println("  +-----------------------------+");
+        System.out.println("   +-----------------------------+");
     }
 
     public void colocarBarcos() {
@@ -104,4 +104,5 @@ public class Jugador {
             }
         }
     }
+
 }
