@@ -34,6 +34,10 @@ public class Casilla {
     public Barco getBarco() {
         return barco;
     }
+
+    public TipoCasilla getEstado() {
+        return estado;
+    }
 }
 
 

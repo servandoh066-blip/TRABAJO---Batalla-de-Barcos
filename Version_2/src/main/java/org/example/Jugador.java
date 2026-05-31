@@ -1,16 +1,18 @@
 package org.example;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Jugador {
-
-
     private String nombre;
     private Tablero tablero;
+    private HashMap<String, Integer> barcosRestantes;
 
     public Jugador(String nombre) {
         this.nombre = nombre;
         this.tablero = new Tablero();
+        this.barcosRestantes = new HashMap<>();
+
     }
 
     public Tablero getTablero()
@@ -33,24 +35,21 @@ public class Jugador {
         for (int i = 0; i < tamanos.length; i++) {
             boolean colocado = false;
             while (!colocado) {
-                System.out.println("Coloca el " + nombres[i] + " (tamaaño " + tamanos[i] + ")");
-
+                System.out.println("Coloca el " + nombres[i] + " (tamaaño " + tamaños[i] + ")");
                 System.out.print("Fila inicial: ");
                 int fila = sc.nextInt();
-
                 System.out.print("Columnna inicial: ");
                 int col = sc.nextInt();
-
                 System.out.print("En horizontal? (true/false): ");
                 boolean horizontal = sc.nextBoolean();
 
-                Barco b = new Barco(nombres[i], tamanos[i]);
+                Barco b = new Barco(nombres[i], tamaños[i]);
 
                 if (tablero.posicionValida(b, new Coordenada(fila, col), horizontal)) {
                     tablero.colocarBarco(b, new Coordenada(fila, col), horizontal);
                     colocado = true;
                 } else {
-                    System.out.println("Posición no válida, intentalo de nuevo.");
+                    System.out.println("Posición inválida, intentalo de nuevo.");
                 }
             }
 
