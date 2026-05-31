@@ -1,5 +1,5 @@
 package org.example;
 
 public class Fragata extends Barco{
-    public Fragata() { super("Portaaviones", 2); }
+    public Fragata() { super("Fragata", 2); }
 }
