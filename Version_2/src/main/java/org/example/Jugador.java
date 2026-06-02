@@ -39,12 +39,11 @@ public class Jugador {
         for (int i = 0; i < 10; i++) {
             System.out.print(" " + i + " |");
             for (int j = 0; j < 10; j++) {
-                // Accedemos a la casilla usando el getter de tu Tablero
                 Casilla c = this.tablero.getCasilla(i, j);
                 if (c.tieneBarco()) {
-                    System.out.print(" B "); // Pinta el barco detectado
+                    System.out.print(" B ");
                 } else {
-                    System.out.print(" ~ "); // Agua vacía
+                    System.out.print(" ~ ");
                 }
             }
             System.out.println("|");
@@ -59,7 +58,6 @@ public class Jugador {
         String[] nombres = {"Portaaviones", "Caza", "Submarino", "Destructor", "Fragata"};
         System.out.println("Colocando barcos para " + nombre);
 
-        // 🌟 1. MOSTRAMOS EL TABLERO COMPLETAMENTE VACÍO NADA MÁS EMPEZAR
         mostrarTableroColocacion();
 
         for (int i = 0; i < tamaños.length; i++) {
@@ -96,7 +94,6 @@ public class Jugador {
                     tablero.colocarBarco(b, new Coordenada(fila, col), horizontal);
                     colocado = true;
 
-                    // 🌟 2. EL BARCO SE HA COLOCADO CON ÉXITO: ACTUALIZAMOS EL TABLERO VISUAL
                     mostrarTableroColocacion();
                 } else {
                     System.out.println("Posición inválida, inténtalo de nuevo.");
