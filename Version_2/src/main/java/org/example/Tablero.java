@@ -49,6 +49,7 @@ public class Tablero {
 
         if (casilla.tieneBarco()) {
             casilla.setDisparada(true);
+            casilla.getBarco().registrarImpacto(coord);
             System.out.println("Le diste");
             return true;
         }

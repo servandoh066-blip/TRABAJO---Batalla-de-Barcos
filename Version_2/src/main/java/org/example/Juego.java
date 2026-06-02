@@ -12,7 +12,7 @@ public class Juego {
         jugador2 = new Jugador("Jugador 2");
     }
 
-    public void iniciar() {
+    public void iniciar() throws CoordenadaInvalidaExcepcion {
         jugador1.colocarBarcos();
         System.out.println("\n==========================================\n");
         jugador2.colocarBarcos();
@@ -41,7 +41,7 @@ public class Juego {
             boolean Acertado = false;
 
             if (fila < 0 || fila >= 10 || col < 0 || col >= 10) {
-                System.out.println("\n¡Coordenada fuera de rango! Pierdes el turno.");
+                System.out.println("\nCoordenada fuera de rango");
             } else {
                 Coordenada disparo = new Coordenada(fila, col);
                 System.out.println("\n--- RESULTADO DEL DISPARO ---");
