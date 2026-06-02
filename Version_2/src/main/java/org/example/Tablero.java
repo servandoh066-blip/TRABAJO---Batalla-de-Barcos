@@ -46,13 +46,13 @@ public class Tablero {
         // Si la casilla tiene un barco...
         if (casilla.tieneBarco()) {
             casilla.setDisparada(true);
-            System.out.println("Tocado");
+            System.out.println("Le diste");
             return true;
         }
         // Si la casilla está vacía (Agua)...
         else {
             casilla.setDisparada(true);
-            System.out.println("Agua");
+            System.out.println("Fue todo agua");
             return false;
         }
     }

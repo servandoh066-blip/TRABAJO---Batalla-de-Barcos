@@ -13,27 +13,21 @@ public class Juego {
     }
 
     public void iniciar() {
-        // FASE 1: Colocación de barcos (Consola limpia para cada uno)
         jugador1.colocarBarcos();
         System.out.println("\n==========================================\n");
         jugador2.colocarBarcos();
 
         Scanner sc = new Scanner(System.in);
 
-        // ¡MUY IMPORTANTE!: Limpiamos el salto de línea que dejó el último 'nextBoolean()'
-        // de la colocación de barcos para que no se ralle el bucle.
         sc.nextLine();
 
         boolean terminado = false;
 
-        // PRIMERO: Inicializamos las variables de los turnos
         Jugador actual = jugador1;
         Jugador enemigo = jugador2;
 
-        // FASE 2: Bucle principal de juego
         while (!terminado) {
 
-            // SEGUNDO: Ahora sí, llamamos al tablero gráfico usando las variables ya creadas
             mostrarInterfazGraficaTexto(actual, enemigo);
 
             System.out.println("TURNO DE: " + actual.getNombre().toUpperCase());
@@ -44,30 +38,28 @@ public class Juego {
             System.out.print("Introduce col del disparo (0-9): ");
             int col = sc.nextInt();
 
-            // Procesamos el disparo en el tablero del rival
+            boolean Acertado=false;
+
             if (fila < 0 || fila >= 10 || col < 0 || col >= 10) {
                 System.out.println("\n⚠¡Coordenada fuera de rango! Pierdes el turno.");
             } else {
                 Coordenada disparo = new Coordenada(fila, col);
                 System.out.println("\n--- RESULTADO DEL DISPARO ---");
                 enemigo.getTablero().recibirDisparo(disparo);
+                Acertado = enemigo.getTablero().recibirDisparo(disparo);
                 System.out.println("-----------------------------\n");
             }
-
-            // Comprobamos si el enemigo ha perdido todos sus barcos
             if (enemigo.getTablero().todasHundidas()) {
-                mostrarInterfazGraficaTexto(actual, enemigo); // Render final del mapa
+                mostrarInterfazGraficaTexto(actual, enemigo);
                 System.out.println("\n¡VICTORIA! " + actual.getNombre() + " ha hundido todos los barcos.");
                 terminado = true;
                 break;
             }
 
-            // Pausa táctica para que el jugador vea si tocó barco ('X') o agua ('O')
             System.out.println("Presiona ENTER para cambiar de turno...");
-            sc.nextLine(); // Limpia el buffer del número entero anterior
-            sc.nextLine(); // Espera la pulsación real de ENTER
+            sc.nextLine();
+            sc.nextLine();
 
-            // Intercambio de roles para el siguiente turno
             Jugador temp = actual;
             actual = enemigo;
             enemigo = temp;
@@ -75,11 +67,9 @@ public class Juego {
         sc.close();
     }
 
-    /**
-     * Dibuja los mapas en la terminal de forma organizada en paralelo
-     */
+
     private void mostrarInterfazGraficaTexto(Jugador jugadorActual, Jugador jugadorEnemigo) {
-        // Limpieza de pantalla ANSI antes de pintar
+
         System.out.print("\033[H\033[2J");
         System.out.flush();
 
@@ -95,32 +85,29 @@ public class Juego {
         Tablero tableroRival = jugadorEnemigo.getTablero();
 
         for (int i = 0; i < 10; i++) {
-            // Panel izquierdo: Tu Flota
             System.out.print(i + "  |");
             for (int j = 0; j < 10; j++) {
                 Casilla c = miTablero.getCasilla(i, j);
                 if (c.estaDisparada() && c.tieneBarco()) {
-                    System.out.print(" X "); // Te han dado
+                    System.out.print(" X ");
                 } else if (c.estaDisparada()) {
-                    System.out.print(" O "); // Fallo del rival
+                    System.out.print(" O ");
                 } else if (c.tieneBarco()) {
-                    System.out.print(" B "); // Tus barcos colocados
+                    System.out.print(" B ");
                 } else {
-                    System.out.print(" ~ "); // Agua oculta
+                    System.out.print(" ~ ");
                 }
             }
 
             System.out.print("|           " + i + "  |");
 
-            // Panel derecho: Tu radar sobre el enemigo (No ves sus "B" ocultas)
             for (int j = 0; j < 10; j++) {
                 Casilla c = tableroRival.getCasilla(i, j);
                 if (c.estaDisparada() && c.tieneBarco()) {
-                    System.out.print(" X "); // Le diste a un barco suyo
+                    System.out.print(" X ");
                 } else if (c.estaDisparada()) {
-                    System.out.print(" O "); // Agua
-                } else {
-                    System.out.print(" ~ "); // Mar sin explorar
+                    System.out.print(" O ");
+                    System.out.print(" ~ ");
                 }
             }
             System.out.println("|");
