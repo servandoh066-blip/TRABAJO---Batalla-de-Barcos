@@ -44,7 +44,6 @@ public class Tablero {
         if (fila < 0 || fila >= 10 || columna < 0 || columna >= 10) {
             throw new CoordenadaInvalidaExcepcion("La coordenada está fuera del tablero");
         }
-
         Casilla casilla = casillas[fila][columna];
 
         if (casilla.tieneBarco()) {
