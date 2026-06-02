@@ -47,7 +47,13 @@ public class Juego {
                 System.out.println("\n--- RESULTADO DEL DISPARO ---");
                 enemigo.getTablero().recibirDisparo(disparo);
 
-                Acertado = enemigo.getTablero().recibirDisparo(disparo);
+                try {
+                    Acertado = enemigo.getTablero().recibirDisparo(disparo);
+                }
+                catch (CoordenadaInvalidaExcepcion e) {
+                    System.out.println("Error: " + e.getMessage());
+                    Acertado = false;
+                }
                 System.out.println("-----------------------------\n");
             }
             if (enemigo.getTablero().todasHundidas()) {

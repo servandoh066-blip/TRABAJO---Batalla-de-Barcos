@@ -37,19 +37,21 @@ public class Tablero {
     }
 
 
-    public boolean recibirDisparo(Coordenada coord) {
+    public boolean recibirDisparo(Coordenada coord) throws CoordenadaInvalidaExcepcion {
         int fila = coord.getFila();
         int columna = coord.getColumna();
 
+        if (fila < 0 || fila >= 10 || columna < 0 || columna >= 10) {
+            throw new CoordenadaInvalidaExcepcion("La coordenada está fuera del tablero");
+        }
+
         Casilla casilla = casillas[fila][columna];
 
-        // Si la casilla tiene un barco...
         if (casilla.tieneBarco()) {
             casilla.setDisparada(true);
             System.out.println("Le diste");
             return true;
         }
-        // Si la casilla está vacía (Agua)...
         else {
             casilla.setDisparada(true);
             System.out.println("Fue todo agua");
