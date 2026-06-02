@@ -38,12 +38,21 @@ public class Juego {
             System.out.print("Introduce col del disparo (0-9): ");
             int col = sc.nextInt();
 
+            boolean acertaste=false;
             if (fila < 0 || fila >= 10 || col < 0 || col >= 10) {
-                System.out.println("\n⚠¡Coordenada fuera de rango! Pierdes el turno.");
+                System.out.println("\n¡Coordenada fuera de rango! Pierdes el turno.");
             } else {
                 Coordenada disparo = new Coordenada(fila, col);
                 System.out.println("\n--- RESULTADO DEL DISPARO ---");
-                enemigo.getTablero().recibirDisparo(disparo);
+
+                try{
+                    acertaste=enemigo.getTablero().recibirDisparo(disparo);
+                }
+                catch (CoordenadaInvalidaExcepcion e){
+                    System.out.println("Error: "+e.getMessage());
+                    acertaste=false;
+                }
+                //enemigo.getTablero().recibirDisparo(disparo);
                 System.out.println("-----------------------------\n");
             }
             if (enemigo.getTablero().todasHundidas()) {
@@ -56,10 +65,15 @@ public class Juego {
             System.out.println("Presiona ENTER para cambiar de turno...");
             sc.nextLine();
             sc.nextLine();
+            if(!acertaste){
+                Jugador temp = actual;
+                actual = enemigo;
+                enemigo = temp;
+            }
+            else {
+                System.out.println("Tiro extra");
+            }
 
-            Jugador temp = actual;
-            actual = enemigo;
-            enemigo = temp;
         }
         sc.close();
     }
