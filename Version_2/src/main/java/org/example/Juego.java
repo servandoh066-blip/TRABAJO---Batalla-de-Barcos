@@ -36,7 +36,7 @@ public class Juego {
             // SEGUNDO: Ahora sí, llamamos al tablero gráfico usando las variables ya creadas
             mostrarInterfazGraficaTexto(actual, enemigo);
 
-            System.out.println("👉 TURNO DE: " + actual.getNombre().toUpperCase());
+            System.out.println("TURNO DE: " + actual.getNombre().toUpperCase());
 
             System.out.print("Introduce fila del disparo (0-9): ");
             int fila = sc.nextInt();
@@ -46,7 +46,7 @@ public class Juego {
 
             // Procesamos el disparo en el tablero del rival
             if (fila < 0 || fila >= 10 || col < 0 || col >= 10) {
-                System.out.println("\n⚠️ ¡Coordenada fuera de rango! Pierdes el turno.");
+                System.out.println("\n⚠¡Coordenada fuera de rango! Pierdes el turno.");
             } else {
                 Coordenada disparo = new Coordenada(fila, col);
                 System.out.println("\n--- RESULTADO DEL DISPARO ---");
@@ -57,7 +57,7 @@ public class Juego {
             // Comprobamos si el enemigo ha perdido todos sus barcos
             if (enemigo.getTablero().todasHundidas()) {
                 mostrarInterfazGraficaTexto(actual, enemigo); // Render final del mapa
-                System.out.println("\n🏆 ¡VICTORIA! " + actual.getNombre() + " ha hundido todos los barcos.");
+                System.out.println("\n¡VICTORIA! " + actual.getNombre() + " ha hundido todos los barcos.");
                 terminado = true;
                 break;
             }
@@ -126,6 +126,6 @@ public class Juego {
             System.out.println("|");
         }
         System.out.println("   +-----------------------------+              +-----------------------------+");
-        System.out.println("   Leyenda: [~] Mar  [B] Tu Barco  [O] Agua disparada  [X] Impacto\n");
+        System.out.println("   [~] Mar  [B] Tu Barco  [O] Agua disparada  [X] Impacto\n");
     }
 }   
