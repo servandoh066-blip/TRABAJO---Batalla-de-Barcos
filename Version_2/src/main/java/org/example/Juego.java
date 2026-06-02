@@ -66,7 +66,7 @@ public class Juego {
                 actual = enemigo;
                 enemigo = temp;
             } else {
-                System.out.println("Le diste, dale otra");s
+                System.out.println("Le diste, dale otra");
             }
         }
     }
