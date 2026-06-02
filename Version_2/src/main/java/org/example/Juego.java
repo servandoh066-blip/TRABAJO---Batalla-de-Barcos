@@ -98,12 +98,13 @@ public class Juego {
 
             System.out.print("|           " + i + "  |");
 
+
             for (int j = 0; j < 10; j++) {
                 Casilla c = tableroRival.getCasilla(i, j);
                 if (c.estaDisparada() && c.tieneBarco()) {
                     System.out.print(" X ");
-                } else if (c.estaDisparada()) {
                     System.out.print(" O ");
+                } else {
                     System.out.print(" ~ ");
                 }
             }
