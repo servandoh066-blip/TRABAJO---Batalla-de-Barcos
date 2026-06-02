@@ -38,14 +38,15 @@ public class Juego {
             System.out.print("Introduce col del disparo (0-9): ");
             int col = sc.nextInt();
 
-            boolean Acertado=false;
+            boolean Acertado = false;
 
             if (fila < 0 || fila >= 10 || col < 0 || col >= 10) {
-                System.out.println("\n⚠¡Coordenada fuera de rango! Pierdes el turno.");
+                System.out.println("\n¡Coordenada fuera de rango! Pierdes el turno.");
             } else {
                 Coordenada disparo = new Coordenada(fila, col);
                 System.out.println("\n--- RESULTADO DEL DISPARO ---");
                 enemigo.getTablero().recibirDisparo(disparo);
+
                 Acertado = enemigo.getTablero().recibirDisparo(disparo);
                 System.out.println("-----------------------------\n");
             }
@@ -60,11 +61,14 @@ public class Juego {
             sc.nextLine();
             sc.nextLine();
 
-            Jugador temp = actual;
-            actual = enemigo;
-            enemigo = temp;
+            if (!Acertado) {
+                Jugador temp = actual;
+                actual = enemigo;
+                enemigo = temp;
+            } else {
+                System.out.println("Le diste, dale otra");s
+            }
         }
-        sc.close();
     }
 
 
